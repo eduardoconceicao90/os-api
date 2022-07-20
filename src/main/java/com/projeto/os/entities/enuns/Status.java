@@ -32,6 +32,6 @@ public enum Status {
 			}
 		}
 
-		throw new IllegalAccessException("Prioridade inválida!" + cod);
+		throw new IllegalAccessException("Status inválido!" + cod);
 	}
 }

@@ -124,7 +124,7 @@ public class OS {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cliente, dataAbertura, dataFechamento, id, observacoes, prioridade, status, tecnico);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -136,12 +136,7 @@ public class OS {
 		if (getClass() != obj.getClass())
 			return false;
 		OS other = (OS) obj;
-		return Objects.equals(cliente, other.cliente) && Objects.equals(dataAbertura, other.dataAbertura)
-				&& Objects.equals(dataFechamento, other.dataFechamento) && Objects.equals(id, other.id)
-				&& Objects.equals(observacoes, other.observacoes) && Objects.equals(prioridade, other.prioridade)
-				&& Objects.equals(status, other.status) && Objects.equals(tecnico, other.tecnico);
+		return Objects.equals(id, other.id);
 	}
-	
-	
 
 }
