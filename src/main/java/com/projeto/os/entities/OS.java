@@ -28,8 +28,8 @@ public class OS {
 	private LocalDateTime dataFechamento;
 	
 	private Integer prioridade;
-	private String observacoes;
 	private Integer status;
+	private String observacoes;
 	
 	@ManyToOne
 	@JoinColumn(name = "tecnico_id")
@@ -47,13 +47,13 @@ public class OS {
 	}
 
 	public OS(Long id, Prioridade prioridade,
-			String observacoes, Status status, Tecnico tecnico, Cliente cliente) {
+			Status status,String observacoes, Tecnico tecnico, Cliente cliente) {
 		super();
 		this.id = id;
 		this.setDataAbertura(LocalDateTime.now());
 		this.prioridade = (prioridade == null) ? 0 : prioridade.getCod();
-		this.observacoes = observacoes;
 		this.status = (status == null) ? 0 : status.getCod();
+		this.observacoes = observacoes;
 		this.tecnico = tecnico;
 		this.cliente = cliente;
 	}
@@ -90,13 +90,6 @@ public class OS {
 		this.prioridade = prioridade.getCod();
 	}
 
-	public String getObservacoes() {
-		return observacoes;
-	}
-
-	public void setObservacoes(String observacoes) {
-		this.observacoes = observacoes;
-	}
 
 	public Status getStatus() throws IllegalAccessException {
 		return Status.toEnum(this.status);
@@ -104,6 +97,14 @@ public class OS {
 
 	public void setStatus(Status status) {
 		this.status = status.getCod();
+	}
+	
+	public String getObservacoes() {
+		return observacoes;
+	}
+	
+	public void setObservacoes(String observacoes) {
+		this.observacoes = observacoes;
 	}
 
 	public Tecnico getTecnico() {
