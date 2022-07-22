@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projeto.os.entities.Tecnico;
+import com.projeto.os.dtos.TecnicoDTO;
 import com.projeto.os.services.TecnicoService;
 
 @RestController
@@ -18,9 +18,9 @@ public class TecnicoController {
 	private TecnicoService tecnicoService;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Tecnico> findById(@PathVariable Long id){
-		Tecnico obj = tecnicoService.findById(id);
-		return ResponseEntity.ok().body(obj);
+	public ResponseEntity<TecnicoDTO> findById(@PathVariable Long id){
+		TecnicoDTO objDTO = new TecnicoDTO(tecnicoService.findById(id));
+		return ResponseEntity.ok().body(objDTO);
 	}
 
 }
