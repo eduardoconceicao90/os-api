@@ -29,12 +29,14 @@ public class TecnicoController {
 	@Autowired
 	private TecnicoService tecnicoService;
 	
+	// Busca Tecnico pelo ID
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<TecnicoDTO> findById(@PathVariable Long id){
 		TecnicoDTO objDTO = new TecnicoDTO(tecnicoService.findById(id));
 		return ResponseEntity.ok().body(objDTO);
 	}
 
+	// Lista todos os Tecnicos
 	@GetMapping
 	public ResponseEntity<List<TecnicoDTO>> findAll(){
 		List<TecnicoDTO> listDTO = tecnicoService.findAll()
@@ -42,6 +44,7 @@ public class TecnicoController {
 		return ResponseEntity.ok().body(listDTO);
 	}
 	
+	// Cria Tecnico
 	@PostMapping
 	public ResponseEntity<TecnicoDTO> create(@Valid @RequestBody TecnicoDTO objDTO){
 		Tecnico newObj = tecnicoService.create(objDTO);
@@ -49,12 +52,14 @@ public class TecnicoController {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	// Atualiza Tecnico
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<TecnicoDTO> update(@PathVariable Long id, @Valid @RequestBody TecnicoDTO objDto) {
 		TecnicoDTO newObj = new TecnicoDTO(tecnicoService.update(id, objDto));
 		return ResponseEntity.ok().body(newObj);
 	}
 	
+	// Deleta Tecnico
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id){
 		tecnicoService.delete(id);
