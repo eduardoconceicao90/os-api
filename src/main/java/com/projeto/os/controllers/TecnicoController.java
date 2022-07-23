@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import com.projeto.os.dtos.TecnicoDTO;
 import com.projeto.os.entities.Tecnico;
 import com.projeto.os.services.TecnicoService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/tecnicos")
 public class TecnicoController {
