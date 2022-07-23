@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.projeto.os.dtos.TecnicoDTO;
@@ -48,6 +49,14 @@ public class TecnicoService {
 		oldObj.setCpf(objDto.getCpf());
 		oldObj.setTelefone(objDto.getTelefone());
 		return tecnicoRepository.save(oldObj);
+	}
+	
+	public void delete(Long id) {
+		Tecnico obj = findById(id);	
+		if (obj.getList().size() > 0){
+			throw new DataIntegratyViolationException("Tecnico possui ordem de serviços, não pode ser deletado!");
+		}
+		tecnicoRepository.deleteById(id);
 	}
 	
 	private Tecnico findByCPF(TecnicoDTO objDTO) {
